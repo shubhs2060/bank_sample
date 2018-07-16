@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+<% if current_user.total.present? %>
+
+<h3>Total balance</h3>
+<%= current_user.total.amount %>
+<% end %>
+<h1>Operations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Value</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @operations.each do |operation| %>
+      <tr>
+        <td><%= operation.operation_type %></td>
+        <td><%= operation.value %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Operation', new_operation_path %>
